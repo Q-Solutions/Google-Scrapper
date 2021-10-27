@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scrapper</title>
+</head>
+<body>
+    <form method="POST">
+        <input type="text" name="search" class="search">
+    </form>
+    <div class="list">
+        <table class="">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Prices</th>
+                    <th>Link</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in arr %}
+                    <tr>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.prices }}</td>
+                        <td><a href="{{ i.link }}" target="_blank">{{ i.link }}</a></td>
+                        <td><img src="{{ i.image }}" alt="{{ i.title }}" height="70" width="70"></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
