@@ -5,8 +5,14 @@
     <title>Scrapper</title>
 </head>
 <body>
+
     <form method="POST">
-        <input type="text" name="search" class="search">
+        {{ form.hidden_tag() }}
+        {{ form.search.label }}
+        {{ form.search() }}
+            {{ form.count.label }}
+            {{ form.count() }}
+            {{ form.submit() }}
     </form>
     <div class="list">
         <table class="">

@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
-from flask import session
-from wtforms import StringField
+from wtforms import StringField, IntegerField, SubmitField
 from wtforms.validators import DataRequired
 
-class AddHours(FlaskForm):
-    pass
+class Search(FlaskForm):
+    search = StringField('Search', validators=[(DataRequired())])
+    count = IntegerField('Number of Products', validators=[(DataRequired())])
+    submit = SubmitField('submit')
