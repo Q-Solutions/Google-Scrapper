@@ -9,13 +9,13 @@ def index():
     form = Search()
     if request.method == "POST":
         query = request.form.get("search")
-        count = form.count.data
+        # count = form.count.data
         query = query.replace(' ', '+')
         final_arr = []
         while True:
-            results = query_search(query, count)
+            results = query_search(query, count=0)
             final_arr += results
-            if (len(final_arr) > 100):
+            if (len(final_arr) > 0):
                 break
         print("final count: ", len(final_arr))
         return render_template('index.html',form=form, arr=final_arr)
@@ -24,14 +24,14 @@ def index():
 @scrapper.route('/api/search',methods=['GET','POST'])
 def api():
     query = request.args.get('k')
-    count = request.args.get('count')
-    count = int(count)
+    # count = request.args.get('count')
+    # count = int(count)
     query = query.replace(' ', '+')
     final_arr = []
     while True:
-        results = query_search(query, count)
+        results = query_search(query, count=0)
         final_arr += results
-        if (len(final_arr) > count):
+        if (len(final_arr) > 0):
             break
     result_json = json.dumps(final_arr)
     print("final count: ",len(final_arr))
